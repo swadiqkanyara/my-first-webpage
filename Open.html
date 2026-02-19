@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ಲಾಗಿನ್ ಪೇಜ್</title>
+    <style>
+        body { font-family: sans-serif; background: #667eea; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        .login-box { background: white; padding: 30px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.2); width: 300px; text-align: center; }
+        input { width: 90%; padding: 10px; margin: 10px 0; border: 1px solid #ccc; border-radius: 5px; }
+        button { width: 100%; padding: 10px; background: #764ba2; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 16px; }
+        #msg { margin-top: 15px; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<div class="login-box">
+    <h2>ಲಾಗಿನ್ ಮಾಡಿ</h2>
+    <input type="text" id="username" placeholder="ಬಳಕೆದಾರರ ಹೆಸರು">
+    <input type="password" id="password" placeholder="ಪಾಸ್‌ವರ್ಡ್">
+    <button onclick="validate()">ಪ್ರವೇಶಿಸಿ</button>
+    <p id="msg"></p>
+</div>
+
+<script>
+    function validate() {
+        var user = document.getElementById('username').value;
+        var pass = document.getElementById('password').value;
+        var msg = document.getElementById('msg');
+
+        // ಪಾಸ್‌ವರ್ಡ್ 'karnataka' ಆಗಿದ್ದರೆ ಮಾತ್ರ ಒಳಗೆ ಬಿಡು
+        if (user === "admin" && pass === "1234") {
+            msg.innerHTML = "ಲಾಗಿನ್ ಯಶಸ್ವಿಯಾಗಿದೆ! ✅";
+            msg.style.color = "green";
+            // ಇಲ್ಲಿ ನೀವು ನಿಮ್ಮ ಬಯೋ-ಡೇಟಾ ಪೇಜ್‌ಗೆ ರೀಡೈರೆಕ್ಟ್ ಮಾಡಬಹುದು
+        } else {
+            msg.innerHTML = "ತಪ್ಪು ಹೆಸರು ಅಥವಾ ಪಾಸ್‌ವರ್ಡ್! ❌";
+            msg.style.color = "red";
+        }
+    }
+</script>
+
+</body>
+</html>
