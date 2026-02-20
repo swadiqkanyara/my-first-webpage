@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="kn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ನೂರಾನಿಯ್ಯ ಮದ್ರಸ - ಜರಿನಗರ</title>
+    <style>
+        body { font-family: 'Arial', sans-serif; background-color: #f0f4f8; display: flex; justify-content: center; padding: 20px; }
+        .card { background: white; width: 100%; max-width: 500px; border-radius: 15px; overflow: hidden; box-shadow: 0 15px 30px rgba(0,0,0,0.1); border-bottom: 8px solid #1b5e20; }
+        .header-img { width: 100%; height: auto; display: block; }
+        .content { padding: 25px; text-align: center; }
+        h1 { color: #1b5e20; font-size: 26px; margin-bottom: 5px; }
+        .reg { font-size: 14px; color: #666; }
+        
+        /* ಪೇಜ್ ಬದಲಿಸುವ ಸ್ಟೈಲ್ */
+        .page { display: none; }
+        .active { display: block; }
+
+        .speciality-list { text-align: left; background: #f9f9f9; padding: 15px; border-radius: 10px; margin: 20px 0; border-left: 5px solid #ffcc00; }
+        .speciality-list li { margin-bottom: 10px; color: #333; font-size: 16px; }
+        
+        .btn { display: block; padding: 12px; border-radius: 8px; font-size: 18px; font-weight: bold; text-decoration: none; margin-top: 15px; cursor: pointer; border: none; }
+        .next-btn { background: #1b5e20; color: white; width: 100%; }
+        .call-btn { background: #1b5e20; color: white; }
+        .whatsapp-btn { background: #25d366; color: white; }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <div id="page1" class="page active">
+            <img src="https://lh3.googleusercontent.com/d/1000832057.jpg" alt="ಮದ್ರಸ ಚಿತ್ರ" class="header-img">
+            <div class="content">
+                <h1>ನೂರಾನಿಯ್ಯ ಮದ್ರಸ, ಜರಿನಗರ</h1>
+                <p class="reg">ರಿಜಿಸ್ಟರ್ ನಂಬರ್: 6233</p>
+                <button class="btn next-btn" onclick="showPage2()">ಮಾಹಿತಿಗಾಗಿ ಇಲ್ಲಿ ಕ್ಲಿಕ್ ಮಾಡಿ ➔</button>
+            </div>
+        </div>
+
+        <div id="page2" class="page">
+            <div class="content">
+                <h2 style="color: #1b5e20;">ನಮ್ಮ ವಿಶೇಷತೆಗಳು</h2>
+                <div class="speciality-list">
+                    <ul>
+                        <li>ಅನುಭವಿ ಮತ್ತು ದೀನಿ ಜ್ಞಾನವುಳ್ಳ ಉಸ್ತಾದರುಗಳು.</li>
+                        <li>ತಜ್ವೀದ್ ಸಹಿತ ಕುರ್ ಆನ್ ಪಾರಾಯಣಕ್ಕೆ ವಿಶೇಷ ಗಮನ.</li>
+                        <li>ಇಸ್ಲಾಮಿಕ್ ಇತಿಹಾಸ ಮತ್ತು ನೈತಿಕ ಶಿಕ್ಷಣ (Moral Education).</li>
+                        <li>ಶಿಸ್ತುಬದ್ಧ ವಾತಾವರಣ ಮತ್ತು ಸುಸಜ್ಜಿತ ಕಟ್ಟಡ.</li>
+                        <li>ಪ್ರತಿ ಮಗುವಿನ ಪ್ರಗತಿಯ ಬಗ್ಗೆ ವೈಯಕ್ತಿಕ ಗಮನ.</li>
+                        <li>ಶುಕ್ರವಾರದ ವಿಶೇಷ ಪ್ರಾರ್ಥನೆ ಮತ್ತು ತರಬೇತಿ.</li>
+                        <li>ಕನ್ನಡ ಮತ್ತು ಅರೇಬಿಕ್ ಭಾಷಾ ಪ್ರೌಢಿಮೆಗೆ ಆದ್ಯತೆ.</li>
+                    </ul>
+                </div>
+
+                <a href="tel:+918495872405" class="btn call-btn">📞 ಕರೆ ಮಾಡಿ: 8495872405</a>
+                <a href="https://wa.me/918495872405" class="btn whatsapp-btn">💬 WhatsApp ಸಂದೇಶ ಕಳುಹಿಸಿ</a>
+                <p style="margin-top: 15px; font-size: 12px; color: blue; cursor: pointer;" onclick="showPage1()">⬅ ಹಿಂದೆ ಹೋಗಿ</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showPage2() {
+            document.getElementById('page1').classList.remove('active');
+            document.getElementById('page2').classList.add('active');
+        }
+        function showPage1() {
+            document.getElementById('page2').classList.remove('active');
+            document.getElementById('page1').classList.add('active');
+        }
+    </script>
+
+</body>
+</html>
