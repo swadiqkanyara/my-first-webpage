@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="kn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KGN TEA STALL</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; margin: 0; background-color: #f4f4f4; scroll-behavior: smooth; }
+        
+        /* ಮೊದಲ ಪುಟ */
+        .page-one { 
+            height: 100vh; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center; 
+            align-items: center; 
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1594631252845-29fc4cc8cde9?q=80&w=1000'); 
+            background-size: cover; 
+            color: white; 
+            text-align: center; 
+        }
+        .page-one h1 { font-size: 45px; margin: 0; color: #ffcc00; }
+        .address { font-size: 18px; margin-top: 10px; color: #ddd; }
+        .scroll-btn { margin-top: 25px; padding: 12px 35px; background-color: #ffcc00; color: black; text-decoration: none; font-weight: bold; border-radius: 50px; }
+
+        /* ಎರಡನೇ ಪುಟ */
+        .page-two { padding: 20px 10px; background-color: #fffde7; }
+        .menu-container { max-width: 600px; margin: auto; background: white; padding: 15px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        h2 { text-align: center; color: #5d4037; border-bottom: 2px solid #ffcc00; padding-bottom: 10px; }
+
+        /* ಮೆನು ಐಟಂ ಸ್ಟೈಲ್ */
+        .menu-item { 
+            display: flex; 
+            align-items: center; 
+            padding: 12px; 
+            border-bottom: 1px solid #eee; 
+        }
+        .menu-item img { 
+            width: 65px; 
+            height: 65px; 
+            border-radius: 8px; 
+            object-fit: cover; 
+            margin-right: 15px; 
+            background-color: #f0f0f0; /* ಇಮೇಜ್ ಲೋಡ್ ಆಗದಿದ್ದರೆ ಈ ಬಣ್ಣ ಕಾಣುತ್ತೆ */
+        }
+        .item-info { flex-grow: 1; }
+        .item-name { font-weight: bold; font-size: 17px; color: #333; }
+        .item-price { color: #e67e22; font-weight: bold; font-size: 16px; margin-top: 3px; }
+
+        .contact-btns { margin-top: 25px; text-align: center; }
+        .btn { display: block; text-decoration: none; padding: 15px; border-radius: 10px; font-weight: bold; margin: 10px auto; max-width: 280px; color: white; }
+        .btn-call { background-color: #007bff; }
+        .btn-wa { background-color: #25D366; }
+    </style>
+</head>
+<body>
+
+    <div class="page-one">
+        <h1>KGN TEA STALL</h1>
+        <p class="address">ವಿಳಾಸ: ಕಾಯರ್ಪಾಡಿ, ಇಳಂತಿಲ ಗ್ರಾಮ, ಬೆಳ್ತಂಗಡಿ</p>
+        <a href="#menu" class="scroll-btn">ಮೆನು ನೋಡಿ</a>
+    </div>
+
+    <div id="menu" class="page-two">
+        <div class="menu-container">
+            <h2>🍴 ನಮ್ಮ ಮೆನು ಕಾರ್ಡ್</h2>
+            
+            <div class="menu-item"><img src="https://images.unsplash.com/photo-1594631252845-29fc4cc8cde9?w=100" alt="Tea"><div class="item-info"><div class="item-name">ಚಹಾ (Tea)</div><div class="item-price">₹10</div></div></div>
+            
+            <div class="menu-item"><img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=100" alt="Coffee"><div class="item-info"><div class="item-name">ಕಾಫಿ (Coffee)</div><div class="item-price">₹12</div></div></div>
+            
+            <div class="menu-item"><img src="https://images.unsplash.com/photo-1544787210-2213d2429f1b?w=100" alt="Horlicks"><div class="item-info"><div class="item-name">Horlicks</div><div class="item-price">₹15</div></div></div>
+            
+            <div class="menu-item"><img src="https://images.unsplash.com/photo-1544787210-2213d2429f1b?w=100" alt="Boost"><div class="item-info"><div class="item-name">Boost</div><div class="item-price">₹15</div></div></div>
+            
+            <div class="menu-item"><img src="https://images.unsplash.com/photo-1603133872878-684f208fb84b?w=100" alt="Fried Rice"><div class="item-info"><div class="item-name">ಫ್ರೈಡ್ ರೈಸ್</div><div class="item-price">₹50</div></div></div>
+            
+            <div class="menu-item"><img src="https://images.unsplash.com/photo-1585032226651-759b368d7246?w=100" alt="Noodles"><div class="item-info"><div class="item-name">ನೂಡಲ್ಸ್</div><div class="item-price">₹50</div></div></div>
+            
+            <div class="menu-item"><img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=100" alt="Gobi"><div class="item-info"><div class="item-name">ಗೋಬಿ ಮಂಚೂರಿ</div><div class="item-price">₹60</div></div></div>
+            
+            <div class="menu-item"><img src="https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?w=100" alt="Kebab"><div class="item-info"><div class="item-name">ಕಬಾಬ್</div><div class="item-price">₹25</div></div></div>
+            
+            <div class="menu-item"><img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=100" alt="Koli Rotti"><div class="item-info"><div class="item-name">ಕೋಳಿ ರೊಟ್ಟಿ</div><div class="item-price">₹40</div></div></div>
+            
+            <div class="menu-item"><img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=100" alt="Parota"><div class="item-info"><div class="item-name">ಪರೋಟ</div><div class="item-price">₹30</div></div></div>
+            
+            <div class="menu-item"><img src="https://images.unsplash.com/photo-1598103442097-8b74394b95c6?w=100" alt="Omelette"><div class="item-info"><div class="item-name">ಆಮ್ಲೆಟ್</div><div class="item-price">₹40</div></div></div>
+            
+            <div class="menu-item"><img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=100" alt="Churumuri"><div class="item-info"><div class="item-name">ಚುರುಮುರಿ</div><div class="item-price">₹30</div></div></div>
+            
+            <div class="menu-item"><img src="https://images.unsplash.com/photo-1546833998-877b37c2e5c6?w=100" alt="Meals"><div class="item-info"><div class="item-name">ಊಟ (Meals)</div><div class="item-price">₹50</div></div></div>
+
+            <div class="contact-btns">
+                <a href="tel:+919901708394" class="btn btn-call">📞 ಕರೆ ಮಾಡಿ</a>
+                <a href="https://wa.me/919901708394" class="btn btn-wa">💬 WhatsApp ಸಂದೇಶ</a>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
