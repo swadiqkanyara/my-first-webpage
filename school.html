@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="kn">
+<head>
+    <meta charset="UTF-8">
+    <title>ಶಾಲಾ ಮಕ್ಕಳ ಮಾಹಿತಿ - ವಂತಿಗೆ ನಿರ್ವಹಣೆ</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; background-color: #f0f2f5; padding: 20px; }
+        .container { max-width: 850px; background: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); margin: auto; }
+        h2 { text-align: center; color: #2c3e50; border-bottom: 2px solid #27ae60; padding-bottom: 10px; }
+        .input-row { display: flex; gap: 10px; margin-bottom: 15px; flex-wrap: wrap; }
+        .input-group { flex: 1; min-width: 180px; }
+        label { display: block; margin-bottom: 5px; font-weight: bold; }
+        input, select { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 6px; box-sizing: border-box; }
+        .btn-add { width: 100%; padding: 12px; background-color: #27ae60; color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 16px; font-weight: bold; }
+        .btn-download { width: 100%; padding: 12px; background-color: #2980b9; color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 16px; font-weight: bold; margin-top: 10px; }
+        .btn-clear { background-color: #e74c3c; margin-top: 10px; }
+        .result-box { margin-top: 25px; padding: 20px; background-color: #e8f5e9; border-radius: 8px; border-left: 5px solid #27ae60; }
+        .summary-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+        table { width: 100%; margin-top: 25px; border-collapse: collapse; }
+        th, td { border: 1px solid #ddd; padding: 12px; text-align: center; }
+        th { background-color: #27ae60; color: white; }
+        tr:nth-child(even) { background-color: #f9f9f9; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>ಶಾಲಾ ಮಕ್ಕಳ ಮಾಹಿತಿ ಮತ್ತು ವಂತಿಗೆ ದಾಖಲಾತಿ</h2>
+    
+    <div class="input-row">
+        <div class="input-group"><label>ಮಗುವಿನ ಹೆಸರು:</label><input type="text" id="name" placeholder="ಹೆಸರು"></div>
+        <div class="input-group">
+            <label>ಲಿಂಗ:</label>
+            <select id="gender"><option value="ಗಂಡು">ಗಂಡು</option><option value="ಹೆಣ್ಣು">ಹೆಣ್ಣು</option></select>
+        </div>
+    </div>
+    <div class="input-row">
+        <div class="input-group"><label>ಮನೆಯ ಜನಸಂಖ್ಯೆ:</label><input type="number" id="familyCount" placeholder="ಸಂಖ್ಯೆ"></div>
+        <div class="input-group"><label>ಉಳಿದಿರುವ ವಂತಿಗೆ (₹):</label><input type="number" id="remainingDonation" placeholder="ಮೊತ್ತ"></div>
+    </div>
+
+    <button class="btn-add" onclick="addStudent()">ಮಾಹಿತಿ ಸೇರಿಸಿ</button>
+    <button class="btn-download" onclick="downloadExcel()">ವರದಿಯನ್ನು Excel ಗೆ ಡೌನ್‌ಲೋಡ್ ಮಾಡಿ</button>
+    <button class="btn-add btn-clear" onclick="clearData()">ಎಲ್ಲಾ ಡೇಟಾ ಅಳಿಸಿ</button>
+
+    <div class="result-box">
+        <h3>ಶಾಲೆಯ ಒಟ್ಟು ವರದಿ:</h3>
+        <div class="summary-grid">
+            <div><strong>ಒಟ್ಟು ಮಕ್ಕಳು:</strong> <span id="tStudents">0</span></div>
+            <div><strong>ಒಟ್ಟು ಗಂಡು:</strong> <span id="tMale">0</span></div>
+            <div><strong>ಒಟ್ಟು ಹೆಣ್ಣು:</strong> <span id="tFemale">0</span></div>
+            <div><strong>ಮನೆಗಳ ಒಟ್ಟು ಜನಸಂಖ್ಯೆ:</strong> <span id="tFamily">0</span></div>
+            <div style="grid-column: span 2; font-size: 1.2em; color: #c0392b; margin-top: 10px;">
+                <strong>ಒಟ್ಟು ಬರಬೇಕಾದ ವಂತಿಗೆ: ₹ <span id="tDonation">0</span></strong>
+            </div>
+        </div>
+    </div>
+
+    <table id="studentTable">
+        <thead>
+            <tr>
+                <th>ಹೆಸರು</th>
+                <th>ಲಿಂಗ</th>
+                <th>ಮನೆಯ ಸಂಖ್ಯೆ</th>
+                <th>ಉಳಿದಿರುವ ವಂತಿಗೆ (₹)</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</div>
+
+<script>
+    // LocalStorage ನಿಂದ ಹಳೆಯ ಡೇಟಾವನ್ನು ಪಡೆಯುವುದು
+    let students = JSON.parse(localStorage.getItem('schoolDataV2')) || [];
+
+    function updateTable() {
+        const tbody = document.querySelector('#studentTable tbody');
+        tbody.innerHTML = '';
+        let m = 0, f = 0, fam = 0, totalDue = 0;
+
+        students.forEach((s) => {
+            let row = tbody.insertRow();
+            row.insertCell(0).innerText = s.name;
+            row.insertCell(1).innerText = s.gender;
+            row.insertCell(2).innerText = s.family;
+            row.insertCell(3).innerText = "₹ " + s.donation;
+            
+            if(s.gender === 'ಗಂಡು') m++; else f++;
+            fam += parseInt(s.family || 0);
+            totalDue += parseFloat(s.donation || 0);
+        });
+
+        document.getElementById('tStudents').innerText = students.length;
+        document.getElementById('tMale').innerText = m;
+        document.getElementById('tFemale').innerText = f;
+        document.getElementById('tFamily').innerText = fam;
+        document.getElementById('tDonation').innerText = totalDue.toLocaleString('hi-IN');
+    }
+
+    function addStudent() {
+        const name = document.getElementById('name').value;
+        const gender = document.getElementById('gender').value;
+        const family = document.getElementById('familyCount').value;
+        const donation = document.getElementById('remainingDonation').value;
+
+        if(!name || family === "" || donation === "") return alert("ದಯವಿಟ್ಟು ಎಲ್ಲಾ ಮಾಹಿತಿ ಭರ್ತಿ ಮಾಡಿ!");
+
+        students.push({name, gender, family, donation});
+        localStorage.setItem('schoolDataV2', JSON.stringify(students));
+        updateTable();
+        
+        // ಫೀಲ್ಡ್‌ಗಳನ್ನು ಖಾಲಿ ಮಾಡುವುದು
+        document.getElementById('name').value = '';
+        document.getElementById('familyCount').value = '';
+        document.getElementById('remainingDonation').value = '';
+    }
+
+    function downloadExcel() {
+        if(students.length === 0) return alert("ಡೌನ್‌ಲೋಡ್ ಮಾಡಲು ಯಾವುದೇ ಡೇಟಾ ಇಲ್ಲ!");
+        
+        let csv = "ಹೆಸರು,ಲಿಂಗ,ಮನೆ ಸಂಖ್ಯೆ,ಉಳಿದಿರುವ ವಂತಿಗೆ\n";
+        students.forEach(s => {
+            csv += `${s.name},${s.gender},${s.family},${s.donation}\n`;
+        });
+        
+        const blob = new Blob(["\ufeff" + csv], { type: 'text/csv;charset=utf-8;' });
+        const link = document.createElement("a");
+        link.href = URL.createObjectURL(blob);
+        link.setAttribute("download", "school_donation_report.csv");
+        link.click();
+    }
+
+    function clearData() {
+        if(confirm("ಎಚ್ಚರಿಕೆ: ಇದು ಎಲ್ಲಾ ದಾಖಲೆಗಳನ್ನು ಖಾಯಂ ಆಗಿ ಅಳಿಸುತ್ತದೆ. ಮುಂದುವರಿಯಬೇಕೆ?")) {
+            localStorage.removeItem('schoolDataV2');
+            students = [];
+            updateTable();
+        }
+    }
+
+    // ಪೇಜ್ ಲೋಡ್ ಆದಾಗ ಟೇಬಲ್ ತೋರಿಸುವುದು
+    window.onload = updateTable;
+</script>
+
+</body>
+</html>
