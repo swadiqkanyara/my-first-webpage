@@ -4,92 +4,125 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ನೂರಾನಿಯ್ಯ ಮದ್ರಸ - ಜರಿನಗರ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Kannada:wght@400;700;900&family=Tiro+Kannada&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Arial', sans-serif; background-color: #f4f7f6; margin: 0; padding: 15px; display: flex; justify-content: center; }
-        .card { background: white; width: 100%; max-width: 480px; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 25px rgba(0,0,0,0.1); border-bottom: 8px solid #1b5e20; }
+        body { font-family: 'Noto Sans Kannada', sans-serif; background-color: #f0f2f5; margin: 0; padding: 15px; display: flex; justify-content: center; }
+        .card { background: white; width: 100%; max-width: 450px; border-radius: 20px; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.1); border-bottom: 8px solid #1b5e20; }
         .header-img { width: 100%; height: auto; display: block; }
         .content { padding: 20px; text-align: center; }
-        h1 { color: #1b5e20; font-size: 24px; margin: 10px 0; }
         
         .page { display: none; }
-        .active { display: block; }
+        .active { display: block; animation: fadeIn 0.5s; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-        /* ವಿಶೇಷತೆಗಳ ಸ್ಟೈಲ್ */
-        .spec-grid { text-align: left; margin: 20px 0; }
-        .spec-item { display: flex; align-items: center; background: #fdfdfd; padding: 12px; border-radius: 10px; margin-bottom: 10px; border: 1px solid #eee; }
-        .spec-icon { width: 40px; height: 40px; margin-right: 15px; }
-        .spec-text { font-size: 16px; color: #333; font-weight: 500; }
+        /* ಮದ್ರಸದ ಹೆಸರಿಗೆ ಹೊಸ ಫಾಂಟ್ ಮತ್ತು ಶೈಲಿ */
+        .madrasa-name { 
+            font-family: 'Tiro Kannada', serif; /* ಕ್ಲಾಸಿಕ್ ಫಾಂಟ್ */
+            color: #1b5e20; 
+            font-size: 28px; 
+            margin: 15px 0 5px 0; 
+            font-weight: 900;
+            letter-spacing: 0.5px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1); /* ಹಗುರವಾದ ಶ್ಯಾಡೋ */
+        }
 
-        .btn { display: flex; align-items: center; justify-content: center; padding: 14px; border-radius: 10px; font-size: 18px; font-weight: bold; text-decoration: none; margin-top: 10px; color: white; border: none; cursor: pointer; }
-        .next-btn { background: #1b5e20; width: 100%; }
+        .reg-number { color: #666; font-size: 13px; margin-bottom: 10px; }
+
+        .badge { background: #e8f5e9; color: #2e7d32; padding: 10px; border-radius: 10px; font-weight: bold; margin-bottom: 15px; border: 1px dashed #2e7d32; }
+
+        .spec-item { display: flex; align-items: center; background: #f9f9f9; padding: 12px; border-radius: 12px; margin-bottom: 10px; border: 1px solid #eee; text-align: left; }
+        .spec-icon { font-size: 20px; margin-right: 15px; }
+        .spec-text { font-size: 15px; font-weight: 500; color: #333; }
+
+        .admission-form { text-align: left; background: #fdfdfd; padding: 15px; border-radius: 15px; border: 1px solid #eee; margin-top: 10px; }
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; font-weight: bold; margin-bottom: 5px; font-size: 14px; }
+        .form-group input { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 8px; box-sizing: border-box; }
+
+        .btn { display: flex; align-items: center; justify-content: center; padding: 14px; border-radius: 10px; font-size: 16px; font-weight: bold; text-decoration: none; margin-top: 12px; color: white; border: none; cursor: pointer; width: 100%; }
+        .primary-btn { background: #1b5e20; }
         .whatsapp-btn { background: #25d366; }
         .call-btn { background: #007bff; }
-        .btn-icon { width: 22px; margin-right: 10px; }
         
-        .back-link { margin-top: 15px; color: #666; cursor: pointer; font-size: 14px; text-decoration: underline; }
+        .back-link { display: block; margin-top: 15px; color: #666; cursor: pointer; text-decoration: underline; font-size: 14px; }
     </style>
 </head>
 <body>
 
-    <div class="card">
-        <div id="page1" class="page active">
-            <img src="https://raw.githubusercontent.com/swadiqkanyara/my-first-webpage/main/1000832057.jpg" alt="ನೂರಾನಿಯ್ಯ ಮದ್ರಸ" class="header-img">
-            <div class="content">
-                <h1>ನೂರಾನಿಯ್ಯ ಮದ್ರಸ, ಜರಿನಗರ</h1>
-                <p style="color: #666; font-size: 14px;">ರಿಜಿಸ್ಟರ್ ನಂಬರ್: 6233</p>
-                <div style="background: #e8f5e9; color: #2e7d32; padding: 10px; border-radius: 8px; font-weight: bold; margin: 15px 0;">
-                    🌙 2026-27 ಸಾಲಿನ ಅಡ್ಮಿಶನ್ ಪ್ರಾರಂಭವಾಗಿದೆ
-                </div>
-                <button class="btn next-btn" onclick="showPage2()">ವಿಶೇಷತೆಗಳನ್ನು ನೋಡಿ ➔</button>
-            </div>
-        </div>
+<div class="card">
+    <div id="homePage" class="page active">
+        <img src="https://raw.githubusercontent.com/swadiqkanyara/my-first-webpage/main/1000832057.jpg" class="header-img">
+        <div class="content">
+            <div class="madrasa-name">ನೂರಾನಿಯ್ಯ ಮದ್ರಸ</div>
+            <div style="font-size: 20px; color: #2e7d32; font-weight: bold; margin-bottom: 5px;">ಜರಿನಗರ</div>
+            <div class="reg-number">ರಿಜಿಸ್ಟರ್ ನಂಬರ್: 6233</div>
 
-        <div id="page2" class="page">
-            <div class="content">
-                <h2 style="color: #1b5e20; margin-bottom: 20px;">ನಮ್ಮ ವಿಶೇಷತೆಗಳು</h2>
-                
-                <div class="spec-grid">
-                    <div class="spec-item">
-                        <img src="https://cdn-icons-png.flaticon.com/512/3429/3429153.png" class="spec-icon">
-                        <div class="spec-text">ಅನುಭವಿ ಉಸ್ತಾದರುಗಳು</div>
-                    </div>
-                    <div class="spec-item">
-                        <img src="https://cdn-icons-png.flaticon.com/512/2641/2641626.png" class="spec-icon">
-                        <div class="spec-text">ತಜ್ವೀದ್ ಸಹಿತ ಕುರ್ ಆನ್ ಶಿಕ್ಷಣ</div>
-                    </div>
-                    <div class="spec-item">
-                        <img src="https://cdn-icons-png.flaticon.com/512/3389/3389033.png" class="spec-icon">
-                        <div class="spec-text">ಇಸ್ಲಾಮಿಕ್ ಇತಿಹಾಸ ಮತ್ತು ಸಂಸ್ಕಾರ</div>
-                    </div>
-                    <div class="spec-item">
-                        <img src="https://cdn-icons-png.flaticon.com/512/1162/1162908.png" class="spec-icon">
-                        <div class="spec-text">ಸುಸಜ್ಜಿತ ತರಗತಿ ಕೊಠಡಿಗಳು</div>
-                    </div>
-                </div>
-
-                <a href="https://wa.me/918495872405" class="btn whatsapp-btn">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" class="btn-icon"> WhatsApp ವಿಚಾರಿಸಿ
-                </a>
-                
-                <a href="tel:+918495872405" class="btn call-btn">
-                    📞 ಈಗಲೇ ಕರೆ ಮಾಡಿ
-                </a>
-
-                <p class="back-link" onclick="showPage1()">ಹಿಂದಕ್ಕೆ ಹೋಗಿ</p>
-            </div>
+            <div class="badge">🌙 2026-27 ಸಾಲಿನ ಅಡ್ಮಿಶನ್ ಪ್ರಾರಂಭ</div>
+            <button class="btn primary-btn" onclick="showPage('specPage')">ನಮ್ಮ ವಿಶೇಷತೆಗಳು ನೋಡಿ ➔</button>
+            <button class="btn whatsapp-btn" style="background:#007bff;" onclick="showPage('formPage')">ಅಡ್ಮಿಶನ್ ಫಾರ್ಮ್ ಭರ್ತಿ ಮಾಡಿ ✍️</button>
+            <a href="tel:+918495872405" class="btn call-btn">📞 ಈಗಲೇ ಕರೆ ಮಾಡಿ</a>
         </div>
     </div>
 
-    <script>
-        function showPage2() {
-            document.getElementById('page1').classList.remove('active');
-            document.getElementById('page2').classList.add('active');
+    <div id="specPage" class="page">
+        <div class="content">
+            <h1>ನಮ್ಮ ವಿಶೇಷತೆಗಳು</h1>
+            <div class="spec-item"><span class="spec-icon">🎓</span><div class="spec-text">ಅನುಭವಿ ಮತ್ತು ದಕ್ಷ ಉಸ್ತಾದರುಗಳು</div></div>
+            <div class="spec-item"><span class="spec-icon">📖</span><div class="spec-text">ತಜ್ವೀದ್ ಸಹಿತ ಕುರ್ ಆನ್ ಶಿಕ್ಷಣ</div></div>
+            <div class="spec-item"><span class="spec-icon">🕌</span><div class="spec-text">ಇಸ್ಲಾಮಿಕ್ ಸಂಸ್ಕಾರ ಮತ್ತು ಇತಿಹಾಸ</div></div>
+            <div class="spec-item"><span class="spec-icon">🏫</span><div class="spec-text">ಸುಸಜ್ಜಿತ ತರಗತಿ ಕೊಠಡಿಗಳು</div></div>
+            
+            <button class="btn primary-btn" onclick="showPage('formPage')">ಈಗಲೇ ಅಡ್ಮಿಶನ್ ಮಾಡಿ ➔</button>
+            <a href="tel:+918495872405" class="btn call-btn">📞 ಹೆಚ್ಚಿನ ಮಾಹಿತಿಗೆ ಕರೆ ಮಾಡಿ</a>
+            <span class="back-link" onclick="showPage('homePage')">ಹಿಂದಕ್ಕೆ ಹೋಗಿ</span>
+        </div>
+    </div>
+
+    <div id="formPage" class="page">
+        <div class="content">
+            <h1>ಅಡ್ಮಿಶನ್ ಫಾರ್ಮ್</h1>
+            <div class="admission-form">
+                <div class="form-group">
+                    <label>ವಿದ್ಯಾರ್ಥಿಯ ಹೆಸರು:</label>
+                    <input type="text" id="stu_name" placeholder="ಹೆಸರು">
+                </div>
+                <div class="form-group">
+                    <label>ತಂದೆಯ ಹೆಸರು:</label>
+                    <input type="text" id="f_name" placeholder="ತಂದೆಯ ಹೆಸರು">
+                </div>
+                <div class="form-group">
+                    <label>ಊರು:</label>
+                    <input type="text" id="place_name" placeholder="ನಿಮ್ಮ ಊರು">
+                </div>
+            </div>
+            <button class="btn whatsapp-btn" onclick="sendWA()">✅ ವಾಟ್ಸಾಪ್ ಮೂಲಕ ಕಳುಹಿಸಿ</button>
+            <a href="tel:+918495872405" class="btn call-btn">📞 ಸಹಾಯಕ್ಕಾಗಿ ಕರೆ ಮಾಡಿ</a>
+            <span class="back-link" onclick="showPage('homePage')">ಹಿಂದಕ್ಕೆ ಹೋಗಿ</span>
+        </div>
+    </div>
+</div>
+
+<script>
+    function showPage(pageId) {
+        document.querySelectorAll('.page').forEach(p => p.style.display = 'none');
+        document.getElementById(pageId).style.display = 'block';
+        document.getElementById(pageId).classList.add('active');
+    }
+
+    function sendWA() {
+        const name = document.getElementById('stu_name').value;
+        const father = document.getElementById('f_name').value;
+        const place = document.getElementById('place_name').value;
+
+        if(!name || !father || !place) {
+            alert("ದಯವಿಟ್ಟು ಎಲ್ಲಾ ಮಾಹಿತಿ ಭರ್ತಿ ಮಾಡಿ");
+            return;
         }
-        function showPage1() {
-            document.getElementById('page2').classList.remove('active');
-            document.getElementById('page1').classList.add('active');
-        }
-    </script>
+
+        const msg = `*ನೂರಾನಿಯ್ಯ ಮದ್ರಸ ಅಡ್ಮಿಶನ್ ಅರ್ಜಿ*%0A*ಹೆಸರು:* ${name}%0A*ತಂದೆ:* ${father}%0A*ಊರು:* ${place}`;
+        window.open(`https://wa.me/918495872405?text=${msg}`, '_blank');
+    }
+</script>
 
 </body>
 </html>
